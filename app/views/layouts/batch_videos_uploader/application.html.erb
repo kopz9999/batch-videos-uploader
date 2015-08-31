@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BatchVideosUploader</title>
+  <title>vzaar uploader</title>
   <%= stylesheet_link_tag    "batch_videos_uploader/application", media: "all" %>
   <%= javascript_include_tag "batch_videos_uploader/application" %>
   <%= csrf_meta_tags %>
@@ -9,8 +9,10 @@
 </head>
 <body>
   <nav class="ui fixed menu inverted navbar">
-      <a href="" class="brand item">Batch Videos Uploader</a>
-      <a href="" class="active item">Upload Videos</a>
+    <%= link_to t("app_name"), '/', class: "brand item" %>
+    <%= link_to t("batch_videos_uploader.remote_videos.title"),
+          {controller: :remote_videos, action: :index },
+          class: "active item" %>
   </nav> <!-- end nav -->
   <main class="ui page grid">
     <%= yield %>
