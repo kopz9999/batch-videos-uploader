@@ -5,5 +5,6 @@
 //= require batch_videos_uploader/async_videos
 
 $(document).ready( function(){
-  var videosForm = new AsyncVideos.Form( $('#new_video') );
+  window.uploadVideosApp = new AsyncVideos.Grid( $('#video-upload-form'),
+    $('#video-grid') );
 });

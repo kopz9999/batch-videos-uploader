@@ -1,16 +1,19 @@
 <%= javascript_include_tag "batch_videos_uploader/remote_videos" %>
 <div class="row">
-  <div class="left aligned starter column">
-    <%= form_for @video, action: :create, html: { class: 'ui form videos-form' } do |f| %>
+  <div id='video-upload-form' class="left aligned starter column">
+    <%= form_for @video, url: {controller: :remote_videos, action: :create},
+      html: { class: 'ui form videos-form' } do |f| %>
       <div class="inline fields">
         <div class="eight wide field">
           <%= f.label :title %>
           <%= f.text_field :title, placeholder: 'Video Title' %>
         </div>
         <div class="three wide field">
-          <div class="ui button">
-            Select Video
-            <%= f.file_field :video, required: true, class: 'hidden' %>
+          <div class='upload-button'>
+              <label for="video_video" class="ui icon button">
+                  <i class="file icon"></i>
+                  Open File</label>
+              <%= f.file_field :video, class: 'hidden' %>
           </div>
         </div>
       </div>
@@ -19,18 +22,14 @@
   </div>
 </div>
 <div class='row'>
-  <table class="ui celled table">
+  <table id='video-grid' class="ui celled table">
     <thead>
       <tr>
         <th>Title</th>
-        <th>Progress</th>
+        <th>Video</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
     </tbody>
   </table>
 

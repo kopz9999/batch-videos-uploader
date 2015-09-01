@@ -9,7 +9,7 @@ module BatchVideosUploader
     def create
       @video = Video.new(video_params)
       @video.save
-      render json: @video
+      render json: @video, methods: :remote_video_url
     end
 
     private
