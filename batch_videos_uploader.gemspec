@@ -7,11 +7,13 @@ require "batch_videos_uploader/version"
 Gem::Specification.new do |s|
   s.name        = "batch_videos_uploader"
   s.version     = BatchVideosUploader::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of BatchVideosUploader."
-  s.description = "TODO: Description of BatchVideosUploader."
+  s.authors     = ["Kyoto Kopz"]
+  s.email       = ["kopz9999@gmail.com"]
+  s.homepage    = "https://github.com/kopz9999"
+  s.summary     = "Rails application to upload several videos at the same time."
+  s.description = "Rails application to upload several videos at the same"\
+    " time with progress. It is pretended to provide upload for commercial"\
+    " video repositories."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
