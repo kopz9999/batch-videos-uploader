@@ -20,6 +20,10 @@ module BatchVideosUploader
       end
     end
 
+    def has_vzaar?
+      !self.configuration_hash[:vzaar].blank?
+    end
+
     protected
 
     def check_configuration

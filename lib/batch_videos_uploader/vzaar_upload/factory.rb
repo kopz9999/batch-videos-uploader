@@ -40,9 +40,26 @@ module BatchVideosUploader
 
       protected
 
+      def vzaar_settings
+        @vzaar_settings ||= BatchVideosUploader::Setting.instance
+          .configuration_hash[:vzaar]
+      end
+
       def sync_class
-        @sync_class ||= BatchVideosUploader::Setting
-          .configuration_hash[:vzaar][:sync_model].constantize
+        @sync_class ||= self.load_sync_class
+      end
+
+      def load_sync_class
+        if BatchVideosUploader::Setting.instance.has_vzaar?
+          sync_model_str = self.vzaar_settings[:sync_model]
+          unless sync_model_str.blank?
+            sync_model_str.constantize
+          else
+            nil
+          end
+        else
+          nil
+        end
       end
 
       def parallel_upload(remote_video)
