@@ -284,7 +284,7 @@ module AsyncVideos {
         this.fileData = data;
         this.previewVideo.setVideo( data );
       } else{
-        $('.ui.modal').modal('show');
+        $('#invalid-modal').modal('show');
       }
     }
     initFormValidation() {

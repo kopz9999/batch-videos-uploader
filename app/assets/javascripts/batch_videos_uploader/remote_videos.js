@@ -3,3 +3,4 @@
 
 //= require jquery-fileupload/basic
 //= require batch_videos_uploader/async_videos
+//= require batch_videos_uploader/sync

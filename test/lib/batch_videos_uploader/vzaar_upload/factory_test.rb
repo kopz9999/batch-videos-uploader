@@ -35,6 +35,7 @@ module BatchVideosUploader
 
         test 'synchronizes videos' do
           objects = factory.sync
+          refute_nil objects
         end
 
       end

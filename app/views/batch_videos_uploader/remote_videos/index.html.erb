@@ -1,8 +1,17 @@
 <%= javascript_include_tag "batch_videos_uploader/remote_videos" %>
 <%= render partial: 'validation_dialog' %>
+<%= render partial: 'sync_dialog' %>
 <div class="row">
   <%= render partial: 'form' %>
 </div>
+<% if BatchVideosUploader::VzaarUpload::Factory.instance.can_sync? %>
+  <div class='row'>
+    <button class="ui labeled icon button" id='sync-button'>
+      <i class="refresh icon"></i>
+      Sync
+    </button>
+  </div>
+<% end %>
 <div class='row'>
   <div id='loader' class="ui active large inline loader"></div>
 </div>
@@ -34,6 +43,9 @@
     window.uploadVideosApp = new AsyncVideos.Grid( $('#video-upload-form'),
       $('#video-grid'), $('#empty-container'), $('#loader'),
       '<%= url_for controller: 'batch_videos_uploader/api/vzaar_videos',
-        action: 'index' %>');
+        action: :index %>');
+    window.uploadVideosApp.sync = new AsyncVideos.Sync( $('#sync-button'),
+      '<%= url_for controller: 'batch_videos_uploader/api/vzaar_videos',
+        action: :sync %>');
   });
 </script>

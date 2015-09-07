@@ -18,8 +18,7 @@ module BatchVideosUploader
     end
 
     def sync
-      sync_videos = VzaarUpload::Factory.instance.sync
-      render json: sync_videos
+      render json: VzaarUpload::Factory.instance.sync
     end
 
     private

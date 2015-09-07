@@ -14,9 +14,9 @@ class Video < ActiveRecord::Base
     self.video.remote_url
   end
 
-  def process_remote_video( title, file )
-    self.video = file
-    self.title = title
+  def process_remote_video( remote_video )
+    self.video = remote_video.file_stream
+    self.title = remote_video.title
     self.save
   end
 

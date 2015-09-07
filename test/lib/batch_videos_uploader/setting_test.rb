@@ -20,6 +20,15 @@ module BatchVideosUploader
           assert_equal obj.configuration_hash[:vzaar][:username], 'test'
         end
       end
+
+      teardown do
+        path = "#{BatchVideosUploader.absolute_path}"\
+          "/test/dummy/config/batch_videos.yml"
+        obj = BatchVideosUploader::Setting.instance
+        obj.stub :default_configuration_path, path do
+          obj.load_settings
+        end
+      end
     end
   end
 end

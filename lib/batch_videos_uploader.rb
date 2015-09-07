@@ -1,4 +1,6 @@
 require 'jquery-rails'
+require 'typescript-rails'
+require 'vzaar'
 require "batch_videos_uploader/engine"
 require "batch_videos_uploader/railtie"
 require "batch_videos_uploader/setting"

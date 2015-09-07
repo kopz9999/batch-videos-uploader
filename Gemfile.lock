@@ -19,6 +19,8 @@ PATH
     batch_videos_uploader (0.0.1)
       jquery-rails (~> 3.1.1)
       rails (~> 4.1.0)
+      typescript-rails (~> 0.6.1)
+      vzaar (~> 1.5.3)
 
 GEM
   remote: https://rubygems.org/
@@ -145,8 +147,6 @@ DEPENDENCIES
   remotipart (~> 1.2)
   semantic-ui-sass!
   sqlite3
-  typescript-rails
-  vzaar
 
 BUNDLED WITH
    1.10.6

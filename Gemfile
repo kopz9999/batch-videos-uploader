@@ -13,15 +13,9 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'typescript-rails'
-
-
-gem 'dragonfly'
-gem 'remotipart', '~> 1.2'
-
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
-gem 'vzaar'
 
-gem 'pry-rails'
-gem 'pry-byebug'
-gem 'byebug'
+group :development, :test do
+  gem 'dragonfly'
+  gem 'remotipart', '~> 1.2'
+end

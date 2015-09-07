@@ -19,6 +19,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.1.0"
   s.add_dependency "jquery-rails", "~> 3.1.1"
+  s.add_dependency "typescript-rails", "~> 0.6.1"
+  s.add_dependency "vzaar", "~> 1.5.3"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pry-rails"
+  s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "byebug"
 end

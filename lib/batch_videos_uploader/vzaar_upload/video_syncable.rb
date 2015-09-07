@@ -3,10 +3,9 @@ module BatchVideosUploader
     module VideoSyncable
 
       # Receive a file from Vzaar API
-      # @param [String] title
-      # @param [File] file
+      # @param [BatchVideosUploader::Models::RemoteVideo] remote_video
       # @return [nil]
-      def process_remote_video( title, file )
+      def process_remote_video( remote_video )
         raise NotImplementedError
       end
 

@@ -1,5 +1,3 @@
-require 'open-uri'
-
 module BatchVideosUploader
   module VzaarUpload
     class Factory < Models::VideosFactory
@@ -32,9 +30,9 @@ module BatchVideosUploader
       def sync
         results = []
         self.retrieve.each do |remote_video|
-          download = open( remote_video.remote_video_url )
           object = self.sync_class.new
-          object.process_remote_video remote_video.title, download
+          remote_video.download
+          object.process_remote_video remote_video
           results << object
         end
         results
