@@ -240,7 +240,7 @@ module AsyncVideos {
     // FIXME
     updateButton(){
       var currentId = ++Form.id;
-      var identifier = 'video_video' + currentId;
+      var identifier = 'models_remote_video_video' + currentId;
       var uploadButton = this.container.find('.upload-button');
       uploadButton.find('label').attr('for', identifier);
       uploadButton.find('input').attr('id', identifier);
@@ -292,7 +292,7 @@ module AsyncVideos {
         .form({
           fields: {
             name: {
-              identifier  : 'video[title]',
+              identifier  : 'models_remote_video[title]',
               rules: [
                 {
                   type   : 'empty',
@@ -301,7 +301,7 @@ module AsyncVideos {
               ]
             },
             video: {
-              identifier  : 'video[video]',
+              identifier  : 'models_remote_video[video]',
               rules: [
                 {
                   type   : 'empty',

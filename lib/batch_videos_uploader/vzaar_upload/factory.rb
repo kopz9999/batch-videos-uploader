@@ -1,6 +1,8 @@
+require 'open-uri'
+
 module BatchVideosUploader
-  module Models
-    class VzaarFactory < VideosFactory
+  module VzaarUpload
+    class Factory < Models::VideosFactory
       include Singleton
 
       protected
@@ -8,6 +10,10 @@ module BatchVideosUploader
       attr_accessor :vzaar_api
 
       public
+
+      def can_sync?
+        !self.sync_class.blank?
+      end
 
       def retrieve
         self.vzaar_api.videos.map{|vci| self.parse_vzaar_item(vci) }
@@ -23,7 +29,23 @@ module BatchVideosUploader
         remote_video
       end
 
+      def sync
+        results = []
+        self.retrieve.each do |remote_video|
+          download = open( remote_video.remote_video_url )
+          object = self.sync_class.new
+          object.process_remote_video remote_video.title, download
+          results << object
+        end
+        results
+      end
+
       protected
+
+      def sync_class
+        @sync_class ||= BatchVideosUploader::Setting
+          .configuration_hash[:vzaar][:sync_model].constantize
+      end
 
       def parallel_upload(remote_video)
         Thread.new do
@@ -50,7 +72,7 @@ module BatchVideosUploader
       end
 
       def parse_vzaar_item(vci)
-        remote_video = RemoteVideo.new
+        remote_video = Models::RemoteVideo.new
         remote_video.remote_id = vci.doc.xpath('//id').text
         remote_video.title = vci.doc.xpath('//title').text
         remote_video.remote_video_url = vci.doc.xpath('//url').text

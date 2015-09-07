@@ -1,4 +1,6 @@
 class Video < ActiveRecord::Base
+  include BatchVideosUploader::VzaarUpload::VideoSyncable
+
   dragonfly_accessor :video
 
   validates :video, presence: true
@@ -10,6 +12,12 @@ class Video < ActiveRecord::Base
 
   def remote_video_url
     self.video.remote_url
+  end
+
+  def process_remote_video( title, file )
+    self.video = file
+    self.title = title
+    self.save
   end
 
 end
