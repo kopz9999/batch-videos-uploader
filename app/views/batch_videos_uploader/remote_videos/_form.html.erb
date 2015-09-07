@@ -1,0 +1,39 @@
+<div id='video-upload-form' class="left aligned starter column">
+  <%= form_for @video,
+    url: { controller: 'batch_videos_uploader/api/vzaar_videos',
+      action: :create}, html: { class: 'ui form videos-form' } do |f| %>
+    <div class="inline fields">
+      <div class="eight wide field">
+        <%= f.label :title %>
+        <%= f.text_field :title, placeholder: 'Video Title' %>
+      </div>
+      <div class="three wide field">
+        <div class='upload-button'>
+            <label for="video_video" class="ui icon button">
+                <i class="file icon"></i>
+                Open File</label>
+            <%= f.file_field :video, class: 'hidden' %>
+        </div>
+      </div>
+    </div>
+    <div class="ui items file-data hidden">
+      <div class="item">
+        <div class="video">
+          <video class='video-player' width='360' height='240' controls>
+          </video>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span></span>
+          </div>
+          <div class="ui labeled icon button">
+            <i class="remove icon"></i>
+            Remove
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.submit 'Submit', class: 'ui button' %>
+    <div class="ui error message"></div>
+  <% end %>
+</div>

@@ -20,3 +20,8 @@ gem 'dragonfly'
 gem 'remotipart', '~> 1.2'
 
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
+gem 'vzaar'
+
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'byebug'

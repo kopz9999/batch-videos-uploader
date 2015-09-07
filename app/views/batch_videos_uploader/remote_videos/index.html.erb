@@ -1,36 +1,39 @@
 <%= javascript_include_tag "batch_videos_uploader/remote_videos" %>
+<%= render partial: 'validation_dialog' %>
 <div class="row">
-  <div id='video-upload-form' class="left aligned starter column">
-    <%= form_for @video, url: {controller: :remote_videos, action: :create},
-      html: { class: 'ui form videos-form' } do |f| %>
-      <div class="inline fields">
-        <div class="eight wide field">
-          <%= f.label :title %>
-          <%= f.text_field :title, placeholder: 'Video Title' %>
-        </div>
-        <div class="three wide field">
-          <div class='upload-button'>
-              <label for="video_video" class="ui icon button">
-                  <i class="file icon"></i>
-                  Open File</label>
-              <%= f.file_field :video, class: 'hidden' %>
-          </div>
-        </div>
-      </div>
-      <%= f.submit 'Submit', class: 'ui button' %>
-    <% end %>
+  <%= render partial: 'form' %>
+</div>
+<div class='row'>
+  <div id='loader' class="ui active large inline loader"></div>
+</div>
+<div class='row'>
+  <div id='empty-container' class="ui stacked segment">
+    <p>No videos uploaded yet</p>
   </div>
 </div>
 <div class='row'>
   <table id='video-grid' class="ui celled table">
+    <colgroup>
+      <col style='width: 20px'>
+      <col>
+      <col style='width: 140px'>
+    </colgroup>
     <thead>
       <tr>
         <th>Title</th>
         <th>Video</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
-
 </div>
+<script type="text/javascript">
+  $(document).ready( function(){
+    window.uploadVideosApp = new AsyncVideos.Grid( $('#video-upload-form'),
+      $('#video-grid'), $('#empty-container'), $('#loader'),
+      '<%= url_for controller: 'batch_videos_uploader/api/vzaar_videos',
+        action: 'index' %>');
+  });
+</script>

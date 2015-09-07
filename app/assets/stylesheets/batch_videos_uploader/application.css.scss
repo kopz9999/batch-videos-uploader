@@ -25,3 +25,14 @@
 .video-player {
   background-color: black;
 }
+
+.file-data .video {
+  padding-right: 20px;
+}
+
+#loader {
+  margin-left: 50%;
+}
+#empty-container, #loader, #video-grid {
+  display: none;
+}

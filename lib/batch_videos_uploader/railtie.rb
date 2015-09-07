@@ -1,5 +1,7 @@
 module BatchVideosUploader
   class Railtie < Rails::Railtie
-    # TODO: Write something here
+    initializer "batch_videos_uploader.railtie.load_settings" do
+      Setting.instance.load_settings
+    end
   end
 end
